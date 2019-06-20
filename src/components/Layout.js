@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import './all.sass'
+import './../sass/layout.sass'
 import useSiteMetadata from './SiteMetadata'
 
 const TemplateWrapper = ({ children }) => {
@@ -13,7 +13,6 @@ const TemplateWrapper = ({ children }) => {
         <html lang="en" />
         <title>{title}</title>
         <meta name="description" content={description} />
-
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -31,7 +30,11 @@ const TemplateWrapper = ({ children }) => {
           href="/img/favicon-16x16.png"
           sizes="16x16"
         />
-
+        <link 
+          href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300" 
+          rel="stylesheet" 
+          type="text/css"
+        />
         <link
           rel="mask-icon"
           href="/img/safari-pinned-tab.svg"
@@ -44,9 +47,15 @@ const TemplateWrapper = ({ children }) => {
         <meta property="og:url" content="/" />
         <meta property="og:image" content="/img/og-image.jpg" />
       </Helmet>
-      <Navbar />
-      <div>{children}</div>
-      <Footer />
+      <div className="columns">
+        <div className="column is-one-fifth">
+          <Navbar />
+        </div>
+        <div className="column">
+          {children}
+          <Footer />
+        </div>
+      </div>
     </div>
   )
 }
